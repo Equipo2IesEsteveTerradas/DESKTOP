@@ -90,6 +90,7 @@ public class App extends Application{
 			
 			CreateCourseController controller = loader.getController();
 			controller.setStage(createCourseStage);
+			controller.setApp(this);
 			
 			createCourseStage.show();
 			
@@ -114,8 +115,10 @@ public class App extends Application{
 			Scene scene = new Scene(deleteCourse);
 			deleteCourseStage.setScene(scene);
 			
+			
 			DeleteCourseController controller = loader.getController();
 			controller.setStage(deleteCourseStage);
+			controller.setApp(this);
 			
 			deleteCourseStage.show();
 		}catch(IOException e) {
