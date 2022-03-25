@@ -4,9 +4,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classVRroom.view.CoursesOverviewController">
@@ -20,19 +21,48 @@
          </font>
       </Label>
    </top>
-   <center>
-      <ListView fx:id="courseList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
-   <bottom>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" layoutX="354.0" layoutY="78.0" spacing="50.0" AnchorPane.leftAnchor="354.0">
+   <left>
+      <BorderPane prefHeight="554.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <ListView fx:id="courseList" onMouseClicked="#showDetails" prefHeight="593.0" prefWidth="187.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <Label text="CURSOS" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <AnchorPane prefHeight="171.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="crearCursButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleCrearCurs" prefHeight="45.0" prefWidth="115.0" text="Crear curs" />
-                  <Button fx:id="eliminarCursButton" mnemonicParsing="false" onAction="#handleEliminarCurs" prefHeight="45.0" prefWidth="115.0" text="Eliminar curs" />
+                  <Button fx:id="crearCursButton" alignment="CENTER" layoutX="43.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleCrearCurs" prefHeight="45.0" prefWidth="115.0" text="Crear curs">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
+                  <Button fx:id="eliminarCursButton" layoutX="43.0" layoutY="98.0" mnemonicParsing="false" onAction="#handleEliminarCurs" prefHeight="45.0" prefWidth="115.0" text="Eliminar curs">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
                </children>
-            </HBox>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="525.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="102.0" layoutY="59.0" text="NOM CURS" />
+            <Label layoutX="100.0" layoutY="116.0" text="DESCRIPCIÓ" />
+            <TextField fx:id="nomCurs" layoutX="213.0" layoutY="55.0" prefHeight="25.0" prefWidth="375.0" />
+            <TextArea fx:id="descripcioCurs" layoutX="213.0" layoutY="107.0" prefHeight="93.0" prefWidth="374.0" />
+            <Label layoutX="137.0" layoutY="239.0" text="USUARIS" />
+            <Label layoutX="523.0" layoutY="239.0" text="PROFESSORS CURS" />
+            <Label layoutX="531.0" layoutY="456.0" text="ALUMNES CURS" />
+            <ListView fx:id="usersList" layoutX="25.0" layoutY="257.0" onMouseClicked="#getSelectedUserFromUsers" prefHeight="399.0" prefWidth="273.0" />
+            <ListView fx:id="teachersList" layoutX="438.0" layoutY="262.0" onMouseClicked="#getSelectedUserFromProfessors" prefHeight="172.0" prefWidth="273.0" />
+            <ListView fx:id="alumsList" layoutX="451.0" layoutY="487.0" onMouseClicked="#getSelectedUserFromAlumnes" prefHeight="172.0" prefWidth="273.0" />
+            <Button fx:id="addUserToProfessors" layoutX="339.0" layoutY="307.0" mnemonicParsing="false" onAction="#insertNewTeacher" prefHeight="25.0" prefWidth="79.0" text="----&gt;" />
+            <Button fx:id="removeUserFromProfessors" layoutX="340.0" layoutY="373.0" mnemonicParsing="false" onAction="#removeTeacherFromCourse" prefHeight="25.0" prefWidth="77.0" text="&lt;----" />
+            <Button fx:id="addUserToAlumnes" layoutX="340.0" layoutY="527.0" mnemonicParsing="false" onAction="#insertNewAlum" prefHeight="18.0" prefWidth="78.0" text="----&gt;" />
+            <Button fx:id="removeUserFromAlumnes" layoutX="339.0" layoutY="591.0" mnemonicParsing="false" onAction="#removeAlumFromCourse" prefHeight="25.0" prefWidth="79.0" text="&lt;----" />
          </children>
       </AnchorPane>
-   </bottom>
+   </center>
 </BorderPane>
