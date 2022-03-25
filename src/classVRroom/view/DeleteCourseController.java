@@ -23,6 +23,8 @@ public class DeleteCourseController {
 	
 	private Stage stage;
 	
+	private App app;
+	
 	private ObservableList<Course> listCourses;
 	
 	public DeleteCourseController() {
@@ -57,6 +59,10 @@ public class DeleteCourseController {
 	public Stage getStage() {
 		return stage;
 	}
+	
+	public void setApp(App app) {
+		this.app = app;
+	}
 
 	public void setStage(Stage stage) {
 		this.stage = stage;
@@ -68,6 +74,7 @@ public class DeleteCourseController {
 			App.getConnection().deleteCourse(course.getId());
 			App.getCourses();
 			stage.close();
+			app.showCoursesOverview();
 		}
 	}
 
